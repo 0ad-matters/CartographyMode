@@ -1,0 +1,7 @@
+{
+    "name": "CartographyMode",
+    "version": "1.0.0",
+    "label": "Cartography Mode",
+    "description": "Start a game with \"cartography mode\" set for all players.",
+    "dependencies": ["0ad=0.0.24"]
+}
