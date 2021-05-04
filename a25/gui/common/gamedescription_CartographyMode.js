@@ -236,8 +236,8 @@ function getGameDescriptionList(initAttributes, mapCache)
 
 function modDescriptions(initAttributes, titles) {
 	titles.push({
-		"label": translate("Allied Map"),
-		"value": initAttributes.settings.AllyMap
+		"label": translate("Allied View"),
+		"value": initAttributes.settings.AllyView
 	});
     return titles;
 }

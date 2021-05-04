@@ -1,4 +1,4 @@
-GameSettingControls.AlliedMap = class AlliedMap extends GameSettingControlCheckbox
+GameSettingControls.AlliedView = class AlliedView extends GameSettingControlCheckbox
 {
 	constructor(...args)
 	{
@@ -21,10 +21,10 @@ GameSettingControls.AlliedMap = class AlliedMap extends GameSettingControlCheckb
 	}
 };
 
-GameSettingControls.AlliedMap.prototype.TitleCaption =
+GameSettingControls.AlliedView.prototype.TitleCaption =
 	// Translation: Make sure to differentiate between the revealed map and  settings!
-	translate("Allied Map");
+	translate("Allied View");
 
-GameSettingControls.AlliedMap.prototype.Tooltip =
+GameSettingControls.AlliedView.prototype.Tooltip =
 	// Translation: Make sure to differentiate between the revealed map and  settings!
-	translate("Toggle allied map (see what your allies see).");
+	translate("Toggle allied view (see what your allies see).");

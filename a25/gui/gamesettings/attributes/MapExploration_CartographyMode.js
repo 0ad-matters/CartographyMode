@@ -13,14 +13,14 @@ GameSettings.prototype.Attributes.MapExploration = class MapExploration extends 
 	{
 		attribs.settings.RevealMap = this.revealed;
 		attribs.settings.ExploreMap = this.explored;
-		attribs.settings.AllyMap = this.allied;
+		attribs.settings.AllyView = this.allied;
 	}
 
 	fromInitAttributes(attribs)
 	{
 		this.explored = !!this.getLegacySetting(attribs, "ExploreMap");
 		this.revealed = !!this.getLegacySetting(attribs, "RevealMap");
-		this.allied = !!this.getLegacySetting(attribs, "AllyMap");
+		this.allied = !!this.getLegacySetting(attribs, "AllyView");
 	}
 
 	onMapChange(mapData)
@@ -29,7 +29,7 @@ GameSettings.prototype.Attributes.MapExploration = class MapExploration extends 
 			return;
 		this.setExplored(this.getMapSetting("ExploreMap"));
 		this.setRevealed(this.getMapSetting("RevealMap"));
-		this.setRevealed(this.getMapSetting("AllyMap"));
+		this.setRevealed(this.getMapSetting("AllyView"));
 	}
 
 	setExplored(enabled)

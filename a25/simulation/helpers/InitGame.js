@@ -41,7 +41,7 @@
 			 cmpRangeManager.ExploreMap(i);
 	 }
  
-	 if (settings.AllyMap)
+	 if (settings.AllyView)
 	 {
 		 for (let i = 1; i < settings.PlayerData.length; ++i)
 		 {
