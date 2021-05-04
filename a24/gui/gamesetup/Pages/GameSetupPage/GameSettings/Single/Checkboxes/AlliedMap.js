@@ -1,12 +1,12 @@
-// This needs loading before GameSettingsLayout, so filename begins with "_".
 GameSettingControls.AlliedMap = class extends GameSettingControlCheckbox
 {
 	onMapChange(mapData)
 	{
-		let mapValue =
-			mapData &&
+		let mapValue;
+		if (mapData &&
 			mapData.settings &&
-			mapData.settings.AllyMap || undefined;
+			mapData.settings.AllyMap !== undefined)
+			mapValue = mapData.settings.AllyMap;
 
 		if (mapValue !== undefined && mapValue != g_GameAttributes.settings.AllyMap)
 		{
@@ -51,9 +51,7 @@ GameSettingControls.AlliedMap = class extends GameSettingControlCheckbox
 };
 
 GameSettingControls.AlliedMap.prototype.TitleCaption =
-	// Translation: Make sure to differentiate between the revealed map and  settings!
 	translate("Allied Map");
 
 GameSettingControls.AlliedMap.prototype.Tooltip =
-	// Translation: Make sure to differentiate between the revealed map and  settings!
 	translate("Toggle allied map (see what your allies see).");
