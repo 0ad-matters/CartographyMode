@@ -22,9 +22,7 @@ GameSettingControls.AlliedView = class AlliedView extends GameSettingControlChec
 };
 
 GameSettingControls.AlliedView.prototype.TitleCaption =
-	// Translation: Make sure to differentiate between the revealed map and  settings!
 	translate("Allied View");
 
 GameSettingControls.AlliedView.prototype.Tooltip =
-	// Translation: Make sure to differentiate between the revealed map and  settings!
 	translate("Toggle allied view (see what your allies see).");
