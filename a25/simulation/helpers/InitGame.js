@@ -1,6 +1,9 @@
 /**
  * Called when the map has been loaded, but before the simulation has started.
  * Only called when a new game is started, not when loading a saved game.
+ * 
+ * This is pretty ugly and (I think) overwrites InitGame.js in "Public" mod (aka the 0AD game).
+ * It's the only way I could get this to work because you can only "Engine.RegisterGlobal()"" once :/.
  */
  function PreInitGame()
  {

@@ -1,53 +1,37 @@
-GameSettings.prototype.Attributes.MapExploration = class MapExploration extends GameSetting
 {
-	init()
-	{
-		this.explored = false;
-		this.revealed = false;
+	let initOld = GameSettings.prototype.Attributes.MapExploration.prototype.init;
+	GameSettings.prototype.Attributes.MapExploration.prototype.init = function () {
+		initOld.call(this);
 		this.allied = false;
-
-		this.settings.map.watch(() => this.onMapChange(), ["map"]);
 	}
 
-	toInitAttributes(attribs)
-	{
-		attribs.settings.RevealMap = this.revealed;
-		attribs.settings.ExploreMap = this.explored;
+	let toInitAttributesOld = GameSettings.prototype.Attributes.MapExploration.prototype.toInitAttributes;
+	GameSettings.prototype.Attributes.MapExploration.prototype.toInitAttributes = function (attribs) {
+		toInitAttributesOld.call(this, attribs);
 		attribs.settings.AllyView = this.allied;
 	}
 
-	fromInitAttributes(attribs)
-	{
-		this.explored = !!this.getLegacySetting(attribs, "ExploreMap");
-		this.revealed = !!this.getLegacySetting(attribs, "RevealMap");
+	let fromInitAttributesOld = GameSettings.prototype.Attributes.MapExploration.prototype.fromInitAttributes;
+	GameSettings.prototype.Attributes.MapExploration.prototype.fromInitAttributes = function (attribs) {
+		fromInitAttributesOld.call(this, attribs);
 		this.allied = !!this.getLegacySetting(attribs, "AllyView");
 	}
 
-	onMapChange(mapData)
-	{
-		if (this.settings.map.type != "scenario")
-			return;
-		this.setExplored(this.getMapSetting("ExploreMap"));
-		this.setRevealed(this.getMapSetting("RevealMap"));
+	let onMapChangeOld = GameSettings.prototype.Attributes.MapExploration.prototype.onMapChange;
+	GameSettings.prototype.Attributes.MapExploration.prototype.onMapChange = function (mapData) {
+		onMapChangeOld.call(this, mapData);
 		this.setRevealed(this.getMapSetting("AllyView"));
 	}
 
-	setExplored(enabled)
-	{
-		this.explored = enabled;
-		this.revealed = this.revealed && this.explored;
+	let setRevealedOld = GameSettings.prototype.Attributes.MapExploration.prototype.setRevealed;
+	GameSettings.prototype.Attributes.MapExploration.prototype.setRevealed = function (enabled) {
+		setRevealedOld.call(this, enabled);
+		this.allied = this.allied || enabled;
 	}
 
-	setAllied(enabled)
-	{
+	GameSettings.prototype.Attributes.MapExploration.prototype.setAllied = function (enabled) {
 		this.allied = enabled;
 		this.revealed = this.revealed && this.allied;
 	}
 
-	setRevealed(enabled)
-	{
-		this.explored = this.explored || enabled;
-		this.allied = this.allied || enabled;
-		this.revealed = enabled;
-	}
-};
+}
