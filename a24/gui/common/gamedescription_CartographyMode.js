@@ -200,6 +200,15 @@ function getGameDescriptionList(mapCache)
 							g_GameAttributes.settings.PopulationCap)]
 		});
 
+	if (g_GameAttributes.settings.WorldPopulationCap !== undefined)
+		titles.push({
+			"label": translate("World Population Cap"),
+			"value":
+				g_WorldPopulationCapacities.Title[
+					g_WorldPopulationCapacities.Population.indexOf(
+						g_GameAttributes.settings.WorldPopulationCap)]
+		});
+
 	titles.push({
 		"label": translate("Treasures"),
 		"value": g_GameAttributes.settings.DisableTreasures ?
@@ -222,7 +231,7 @@ function getGameDescriptionList(mapCache)
 		"value": g_GameAttributes.settings.CheatsEnabled
 	});
 
-	return titles
+	return titles;
 }
 
 function modDescriptions(mapCache, titles) {
@@ -239,8 +248,7 @@ function getGameDescription(mapCache) {
 	return titles.map(title => sprintf(translate("%(label)s %(details)s"), {
 		"label": coloredText(title.label, g_DescriptionHighlight),
 		"details":
-			title.value === true ? translateWithContext("gamesetup option", "enabled") :
-				title.value || translateWithContext("gamesetup option", "disabled")
+			title.value === true ? translateWithContext("game setup option", "enabled") :
+				title.value || translateWithContext("game setup option", "disabled")
 	})).join("\n");
 }
-
